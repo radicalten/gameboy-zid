@@ -119,7 +119,7 @@ unsigned int *sdl_get_framebuffer(void)
 
 void sdl_frame(void)
 {
-     SDL_Delay(10);
+     SDL_Delay(1);
      frames++;
      SDL_UpdateWindowSurface(window);
 }
