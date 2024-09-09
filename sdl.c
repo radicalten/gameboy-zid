@@ -120,10 +120,10 @@ unsigned int *sdl_get_framebuffer(void)
 void sdl_frame(void)
 {
 
-int desired_fps = 60; 
-int last_ticks = SDL_GetTicks();
+unsigned int desired_fps = 60; 
+unsigned int last_ticks = SDL_GetTicks();
 
-while (true) {
+while (1) {
      if (SDL_GetTicks() - last_ticks < 1000/desired_fps) {
          continue;
      } 
