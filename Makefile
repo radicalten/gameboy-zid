@@ -2,7 +2,7 @@ SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 
 CFLAGS=-march=native -O3 -Wextra -Wall -Wno-switch -std=c99
-LDFLAGS=-lSDL2
+LDFLAGS= -I/opt/homebrew/include/SDL2 -L/opt/homebrew/lib -Wl,-rpath,/opt/homebrew/lib -lSDL2
 
 all: clean gameboy
 
