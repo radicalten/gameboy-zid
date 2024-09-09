@@ -20,9 +20,12 @@ jobs:
     - name: Compile
       run: |
         make -f Makefile
+    - name: Create tarball
+      run: |
+          tar -cvf gameboy.tgz gameboy
     - name: Upload
       uses: actions/upload-artifact@v4
       with:
         name: Artifact
         path: |
-          .
+          ./gameboy.tgz
