@@ -117,10 +117,20 @@ unsigned int *sdl_get_framebuffer(void)
 	return surface->pixels;
 }
 
+    Uint32 startTime, elapsedTime, frameDuration;
+    const Uint32 frameRate = 60; // Desired frame rate
+    const Uint32 frameDelay = 1000 / frameRate; // Milliseconds per frame
+
 void sdl_frame(void)
 {
      //void SDL_Delay(Uint32 ms); 1000ms = 1s 1/60 = 16.67ms per frame 60fps	
-     SDL_Delay(15);
+
+     startTime = SDL_GetTicks(); // Get start time of frame
+     elapsedTime = SDL_GetTicks() - startTime; // Calculate elapsed time
+     frameDuration = frameDelay - elapsedTime; // Calculate time to delay
+if (frameDuration > 0) {
+            SDL_Delay(frameDuration); // Delay to maintain frame rate
+        }
      frames++;
      SDL_UpdateWindowSurface(window);
 }
