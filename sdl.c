@@ -13,6 +13,8 @@ static int button_a, button_b;
 static int button_down, button_up, button_left, button_right;
 static int button_debug, button_quit;
 
+
+
 struct keymap
 {
 	SDL_Scancode code;
@@ -117,9 +119,19 @@ unsigned int *sdl_get_framebuffer(void)
 
 void sdl_frame(void)
 {
-	frames++;
 
-	SDL_UpdateWindowSurface(window);
+int desired_fps = 60; 
+int last_ticks = SDL_GetTicks();
+
+while (true) {
+     if (SDL_GetTicks() - last_ticks < 1000/desired_fps) {
+         continue;
+     } 
+     last_ticks = SDL_GetTicks();
+     frames++;
+     SDL_UpdateWindowSurface(window);
+}
+	
 }
 
 void sdl_quit()
