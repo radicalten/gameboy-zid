@@ -119,7 +119,8 @@ unsigned int *sdl_get_framebuffer(void)
 
 void sdl_frame(void)
 {
-     SDL_Delay(1);
+     //void SDL_Delay(Uint32 ms); 1000ms = 1s 1/60 = 16.67ms per frame 60fps	
+     SDL_Delay(16);
      frames++;
      SDL_UpdateWindowSurface(window);
 }
